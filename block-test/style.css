@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    background-color: #e89cac;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#block {
+    /* background-color: #00000015; */
+    border: 1px solid #000;
+
+    display: flex;
+    flex-flow: row wrap;
+    width: 281px;
+    height: 281px;
+
+    overflow-x: hidden;
+    overflow-y: scroll;
+    scrollbar-width: 200px;
+    scroll-snap-type: y proximity;
+    scroll-behavior: smooth;
+}
+img {
+    scroll-snap-align: start;
+    width: 281px;
+    height: 281px;
+}
+p {
+    margin: 20px 0;
+    font-size: 1.5rem;
+}
