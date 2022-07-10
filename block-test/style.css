@@ -6,7 +6,7 @@
 }
 
 body {
-    background-color: #e89cac;
+    background-color: #e8cb9c;
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -17,17 +17,20 @@ body {
 
 #block {
     /* background-color: #00000015; */
-    border: 1px solid #000;
+    /* border: 10px solid #000; */
+    outline: 4px solid;
+    outline-color: #ff3333;
 
     display: flex;
     flex-flow: row wrap;
     width: 281px;
     height: 281px;
+    margin: 28px 0;
 
     overflow-x: hidden;
     overflow-y: scroll;
-    scrollbar-width: 200px;
-    scroll-snap-type: y proximity;
+    scrollbar-width: none;
+    scroll-snap-type: y mandatory;
     scroll-behavior: smooth;
 }
 img {
@@ -36,6 +39,9 @@ img {
     height: 281px;
 }
 p {
-    margin: 20px 0;
+    margin: 2px 0;
     font-size: 1.5rem;
+}
+span {
+    background-color: #00000015;
 }
