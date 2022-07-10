@@ -1,16 +1,18 @@
+
 const bloco         = document.getElementById("block");
 const corrPieceText = document.getElementById('correct-piece');
 const currPieceText = document.getElementById('current-piece');
 const allPieces     = Array.from(document.querySelectorAll('img'));
 const piecesLenght  = allPieces.length;
-const firstPiece    = allPieces.at(0);
-const lastPiece     = allPieces.at(-1);
+const firstPiece    = allPieces[0];
+const lastPiece     = allPieces[allPieces.length - 1];
 
 const imageHeight   = firstPiece.height;
 const correctPiece  = 2;
 
-let fixScrollTimer  = null;
-let getPieceTimer   = null;
+let timerFixTouchScroll  = null;
+let timerFixScroll  = null;
+let timerGetPiece   = null;
 
 corrPieceText.innerText = correctPiece;
 firstPiece.setAttribute('id', 'firstPiece');
@@ -38,13 +40,13 @@ bloco.addEventListener('scroll', () => {
         lastPiece.style.boxShadow = "";
     }
 
-    // sistema para indentificar quando o usuário termina de scrollar
-    if (fixScrollTimer !== null) {
-        clearTimeout(fixScrollTimer);
+    // indentificar quando o usuário termina de scrollar
+    if (timerFixTouchScroll !== null) {
+        clearTimeout(timerFixTouchScroll);
     }
-    // isto irá corrigir o mal funcionamento do scroll-snap-align ao scrollar com o touch e adicionar estilos para o usuário perceber
+    // corrigir o mal funcionamento do scroll-snap-align com o touch e adicionar estilos à ação
     bloco.addEventListener('touchend', () => {
-        fixScrollTimer = setTimeout(() => {
+        timerFixTouchScroll = setTimeout(() => {
             bloco.style.backgroundColor = "#0004ff0b";
             
             setTimeout(() => {
@@ -56,10 +58,10 @@ bloco.addEventListener('scroll', () => {
     });
 
     // mesmo sistema para indentificar quando o usuário termina de scrollar
-    if (getPieceTimer !== null) {
-        clearTimeout(getPieceTimer);
+    if (timerGetPiece !== null) {
+        clearTimeout(timerGetPiece);
     }
-    getPieceTimer = setTimeout(() => {
+    timerGetPiece = setTimeout(() => {
         console.log("Peça escolhida: " + currentPiece);
         currPieceText.innerText = currentPiece;
 
@@ -67,6 +69,14 @@ bloco.addEventListener('scroll', () => {
     }, 1300);
 
 
+    if (timerFixTouchScroll !== null) {
+        clearTimeout(timerFixTouchScroll);
+    }
+    timerFixTouchScroll = setTimeout(() => {
+        if (!Number.isInteger(currentPosition)) {
+            bloco.scrollTop = Math.round(currentPosition) * 281;
+        }
+    }, 600);
 });
 
 

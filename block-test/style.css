@@ -34,6 +34,9 @@ body {
     scroll-snap-type: y mandatory;
     scroll-behavior: smooth;
 }
+#block::-webkit-scrollbar {
+    display: none;
+}
 img {
     scroll-snap-align: start;
     width: 281px;
