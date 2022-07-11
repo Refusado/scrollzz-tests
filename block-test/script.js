@@ -10,7 +10,8 @@ const lastPiece     = allPieces[allPieces.length - 1];
 const imageHeight   = firstPiece.height;
 const correctPiece  = 2;
 
-let timerFixTouchScroll  = null;
+let isTouching = false;
+let isScrolling = false;
 let timerFixScroll  = null;
 let timerGetPiece   = null;
 
@@ -19,11 +20,51 @@ firstPiece.setAttribute('id', 'firstPiece');
 lastPiece.setAttribute('id', 'lastPiece');
 
 
+bloco.scrollTop = 800;
+setTimeout(() => {
+    bloco.scrollTop = 0;
+}, 100);
+
+bloco.addEventListener('touchstart', () => isTouching = true);
+
 bloco.addEventListener('scroll', () => {
     let currentPosition = bloco.scrollTop / imageHeight;
     let currentPiece = Math.round(currentPosition + 1);
 
+    isScrolling = true;
     bloco.style.outlineColor = "";
+
+
+    if (timerFixScroll !== null) {
+        clearTimeout(timerFixScroll);
+    }
+    timerFixScroll = setTimeout(() => {
+        isScrolling = false;
+        if (!Number.isInteger(currentPosition) && !isTouching) {
+            bloco.scrollTop = Math.round(currentPosition) * imageHeight;
+        }
+    }, 500);
+
+    
+    bloco.addEventListener('touchend', () => {
+        isTouching = false;
+        if (!isScrolling) {
+            bloco.scrollTop = Math.round(currentPosition) * imageHeight;
+        }
+    });
+
+    
+    if (timerGetPiece !== null) clearTimeout(timerGetPiece);
+    timerGetPiece = setTimeout(() => {
+        // console.log("Peça escolhida: " + currentPiece);
+        if (!isTouching) {
+            currPieceText.innerText = currentPiece;
+            
+            verifyPiece(currentPiece, correctPiece);
+        }
+    }, 1300);
+
+
 
     // adicionar sombras na primeira e última peça para monstrar início e fim da área de scroll
     if (currentPiece == 1 || currentPiece == piecesLenght) {
@@ -39,44 +80,6 @@ bloco.addEventListener('scroll', () => {
         firstPiece.style.boxShadow = "";
         lastPiece.style.boxShadow = "";
     }
-
-    // indentificar quando o usuário termina de scrollar
-    if (timerFixTouchScroll !== null) {
-        clearTimeout(timerFixTouchScroll);
-    }
-    // corrigir o mal funcionamento do scroll-snap-align com o touch e adicionar estilos à ação
-    bloco.addEventListener('touchend', () => {
-        timerFixTouchScroll = setTimeout(() => {
-            bloco.style.backgroundColor = "#0004ff0b";
-            
-            setTimeout(() => {
-                bloco.style.backgroundColor = "";
-            }, 300);
-
-            bloco.scrollTop = bloco.scrollTop;
-        }, 400);
-    });
-
-    // mesmo sistema para indentificar quando o usuário termina de scrollar
-    if (timerGetPiece !== null) {
-        clearTimeout(timerGetPiece);
-    }
-    timerGetPiece = setTimeout(() => {
-        console.log("Peça escolhida: " + currentPiece);
-        currPieceText.innerText = currentPiece;
-
-        verifyPiece(currentPiece, correctPiece);
-    }, 1300);
-
-
-    if (timerFixTouchScroll !== null) {
-        clearTimeout(timerFixTouchScroll);
-    }
-    timerFixTouchScroll = setTimeout(() => {
-        if (!Number.isInteger(currentPosition)) {
-            bloco.scrollTop = Math.round(currentPosition) * 281;
-        }
-    }, 600);
 });
 
 
