@@ -82,14 +82,6 @@ bloco.addEventListener('scroll', () => {
     }
 });
 
-
-function scrollEnd(timeout, timer, callback) {
-    if (timer !== null) {
-        clearTimeout(timer);
-    }
-    timer = setTimeout(callback, timeout);
-}
-
 function verifyPiece(curr, corr) {
     if (curr === corr) {
         bloco.style.outlineColor = "green";
