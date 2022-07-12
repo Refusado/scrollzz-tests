@@ -48,6 +48,7 @@ body {
     scrollbar-width: none;
     scroll-snap-type: y mandatory;
     scroll-behavior: smooth;
+    -ms-scroll-snap-type: y mandatory;
 }
 .tile::-webkit-scrollbar {
     display: none;
