@@ -20,9 +20,10 @@ function createTiles(tilesNo, columns, imagesNo) {
         newTile = document.createElement('div');
         newTile.setAttribute('class', 'tile');
 
-        for (let i = 0; i < imagesNo; i++) {
+        for (let i = 1; i <= imagesNo; i++) {
             newPiece = document.createElement('img');
             newPiece.setAttribute('src', imageSrc);
+            newPiece.setAttribute('alt', 'Piece Image ' + i);
             newTile.appendChild(newPiece);
         }
 
