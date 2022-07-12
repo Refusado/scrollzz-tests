@@ -13,7 +13,7 @@ export const createTiles = (tilesNo, columns, piecesNo, type) => {
         let imageSrcs   = [];
 
         for (let i = 0; i < piecesNo; i++) {
-            imageSrcs.push("../img/" + type + `/piece-${i + 1}.png`);
+            imageSrcs.push(`../img/${type}/piece-${i + 1}.png`);
         }
         shuffle(imageSrcs);
 
@@ -34,6 +34,7 @@ export const createTiles = (tilesNo, columns, piecesNo, type) => {
 
             newPiece = document.createElement('img');
             newPiece.setAttribute('src', imageSrcs[ii]);
+            newPiece.setAttribute('alt', type + ' puzzle piece');
 
             newTile.appendChild(newPiece);
         }
