@@ -38,7 +38,7 @@ function createTiles(tilesNo, columns, imagesNo) {
     container.style.height = `calc((min(${minPx}px, ${minVw}vw) / ${columns} * ${tilesNo / columns})`;
 }
 
-createTiles(20, 4, 7);
+createTiles(4, 2, 7);
 
 
 
