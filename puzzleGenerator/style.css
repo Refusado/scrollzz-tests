@@ -6,7 +6,8 @@
 }
 
 body {
-    background-color: #a5e8bb;
+    background-color: #e98994;
+    /* background-color: #5d82b0; */
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -20,15 +21,22 @@ body {
     height: 98vh;
 
     display: flex;
+    flex-flow: row wrap;
     justify-content: center;
     align-items: center;
+    align-content: center;
+}
+#stats {
+    display: inline-block;
+    width: 100%;
+    font-size: min(2rem, 6vw);
+    text-align: center;
+    padding-bottom: 6vh;
 }
 #tiles-container {
-    outline: .3vh solid;
-    outline-color: #efa046;
+    /* outline: .3vh solid; */
+    /* outline-color: #7eabdc; */
     width: min(100%, 480px);
-    border-radius: .2vw;
-    overflow: hidden;
     display: grid;
 }
 
@@ -53,10 +61,6 @@ img {
     scroll-snap-align: start;
     width: 100%;
     height: 100%;
-}
-p {
-    margin: 2px 0;
-    font-size: 1.5rem;
 }
 span {
     background-color: #0004ff0b;
