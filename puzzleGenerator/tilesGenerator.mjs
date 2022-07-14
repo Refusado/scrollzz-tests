@@ -43,7 +43,7 @@ export const createTiles = (tilesNo, columns, piecesNo, type) => {
     }
 
     container.style.gridTemplateColumns = `repeat(${columns}, 1fr)`;
-    container.style.gridTemplateRows    = `repeat(${tilesNo / columns}, ${1 / piecesNo}fr)`;
+    container.style.gridTemplateRows    = `repeat(${tilesNo / columns}, ${1 / tilesNo}fr)`;
 
     return correctPos;
 }

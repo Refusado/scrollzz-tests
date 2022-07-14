@@ -16,7 +16,7 @@ body {
     flex-direction: column;
 }
 #content-container {
-    width: min(95vw, 76vh, 768px);
+    width: min(95vw, 68vh, 768px);
     max-width: 95vw;
     height: 98vh;
 
@@ -29,7 +29,7 @@ body {
 #stats {
     display: inline-block;
     width: 100%;
-    font-size: min(2rem, 6vw);
+    font-size: min(2rem, 6vw, 4.5vh);
     text-align: center;
     padding-bottom: 6vh;
 }
@@ -37,6 +37,7 @@ body {
     /* outline: .3vh solid; */
     /* outline-color: #7eabdc; */
     width: min(100%, 480px);
+    height: min(100%, 480px);
     display: grid;
 }
 
