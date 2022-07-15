@@ -6,8 +6,7 @@
 }
 
 body {
-    background-color: #d59be4;
-    /* background-color: #5d82b0; */
+    background-color: #e49b9b;
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -33,14 +32,12 @@ body {
     text-align: center;
     padding-bottom: 6vh;
 }
-#tiles-container {
-    background-color: red;
+#items-container {
     width: min(95vw, 68vh, 480px);
-    display: flex;
-    flex-flow: row wrap;
+    display: grid;
 }
 
-.tile {
+.item {
     display: flex;
     flex-flow: row wrap;
 
@@ -54,7 +51,7 @@ body {
     scroll-behavior: smooth;
     -ms-scroll-snap-type: y mandatory;
 }
-.tile::-webkit-scrollbar {
+.item::-webkit-scrollbar {
     display: none;
 }
 img {
