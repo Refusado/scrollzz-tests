@@ -42,11 +42,13 @@ export const createTiles = (tilesNo, columns, piecesNo, type) => {
         container.appendChild(newTile);
     }
 
-    container.style.gridTemplateColumns = `repeat(${columns}, 1fr)`;
-    container.style.gridTemplateRows    = `repeat(${tilesNo / columns}, 1fr)`;
-    // container.style.gridTemplateRows    = `fit-content(50%)`;
-    container.style.height              = `${120 * 5}px`;
-    console.log(tilesNo / columns);
+    const tiles = Array.from(document.querySelectorAll('.tile'));
+    const tilesWidth = `min(${95 / columns}vw, ${68 / columns}vh, ${480 / columns}px)`;
+
+    for (const elem of tiles) {
+        elem.style.width = tilesWidth;
+        elem.style.height = tilesWidth;
+    }
 
     return correctPos;
 }

@@ -1,6 +1,6 @@
 import { createTiles    } from "./tilesGenerator.mjs";
 import { tilerListener  } from "./tilesActions.mjs";
-const correctPositions = createTiles(4, 2, 8, "stars");
+const correctPositions = createTiles(20, 4, 8, "stars");
 
 const tiles = Array.from(document.querySelectorAll('.tile'));
 
