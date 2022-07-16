@@ -6,7 +6,7 @@
 }
 
 body {
-    background-color: #e49b9b;
+    background-color: #dde49b;
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -27,6 +27,7 @@ body {
 }
 .play-game-btn {
     background: #00000014;
+    outline: none;
     width: min(3vw, 4vh, 40px);
     height: min(3vw, 4vh, 40px);
     padding: 14px;
@@ -50,6 +51,7 @@ body {
 }
 
 .item {
+    outline: .01vw solid #04011b6c;
     display: flex;
     flex-flow: row wrap;
 
@@ -70,8 +72,4 @@ img {
     scroll-snap-align: start;
     width: 100%;
     height: 100%;
-}
-span {
-    background-color: #0004ff0b;
-    background-color: #00000015;
 }
