@@ -3,7 +3,6 @@ let isAllCorrect = false; // PARA QUANDO TODAS AS PEÇAS ESTIVEREM CORRETAS
 let imgWidth;
 
 export const itemListener = (item, correct, itemKey) => {
-    const statsText     = item.parentNode.previousElementSibling;
     let isTouching      = false;
     let isScrolling     = false;
     let timerFixScroll  = null;
@@ -19,12 +18,10 @@ export const itemListener = (item, correct, itemKey) => {
         item.scrollTop = item.scrollTop;
     });
 
-    statsText.innerText = 'Lanse a brabs';
 
     item.addEventListener('touchstart', () => isTouching = true);
     item.addEventListener('scroll', () => {
 
-        statsText.innerText = 'Lanse a brabs';
         isScrolling         = true;
         isCorrect[itemKey]  = false;
         let currentPosition = item.scrollTop / imgWidth;
@@ -71,7 +68,6 @@ export const itemListener = (item, correct, itemKey) => {
                 if (isAllCorrect) {
                     document.body.style.backgroundColor = "#5d82b0";
                     itemContainer.style.backgroundColor = "#dcd17e";
-                    statsText.innerText = 'o.O';
                 }
             }
         }, 2000);

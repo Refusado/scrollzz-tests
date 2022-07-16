@@ -20,17 +20,28 @@ body {
     height: 98vh;
 
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
     align-content: center;
 }
-#stats {
-    display: inline-block;
-    width: 100%;
-    font-size: min(2rem, 6vw, 4.5vh);
-    text-align: center;
-    padding-bottom: 6vh;
+.play-game-btn {
+    background: #00000014;
+    padding: 14px;
+    width: min(3vw, 4vh, 40px);
+    height: min(3vw, 4vh, 40px);
+
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: .5vw;
+
+    cursor: pointer;
+    transition: 300ms;
+}
+#play-game-btn:hover {
+    background: #0000001c;
 }
 #items-container {
     width: min(95vw, 68vh, 480px);
