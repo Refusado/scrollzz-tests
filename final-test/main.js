@@ -46,6 +46,10 @@ function startGame(level) {
 }
 function closeGame() {
     for (const elem of items) {
+        // elem.removeEventListener('touchstart');
+        // elem.removeEventListener('touchend');
+        // elem.removeEventListener('scroll');
+
         itemsContainer.removeChild(elem);
     }
     startButton.style.color = "";

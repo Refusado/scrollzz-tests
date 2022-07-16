@@ -3,6 +3,11 @@ let isAllCorrect = false; // PARA QUANDO TODAS AS PEÇAS ESTIVEREM CORRETAS
 let imgWidth;
 
 export const itemListener = (item, correct, itemKey) => {
+    // RESETA AS PEÇAS CORRETAS NA TROCA DE NÍVEL
+    if (itemKey === 0) {
+        isCorrect = [];
+    }
+
     let isTouching      = false;
     let isScrolling     = false;
     let timerFixScroll  = null;

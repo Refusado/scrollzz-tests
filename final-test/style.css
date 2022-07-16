@@ -27,9 +27,10 @@ body {
 }
 .play-game-btn {
     background: #00000014;
-    padding: 14px;
     width: min(3vw, 4vh, 40px);
     height: min(3vw, 4vh, 40px);
+    padding: 14px;
+    margin: 6px;
 
     display: inline-flex;
     justify-content: center;
