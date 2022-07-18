@@ -4,9 +4,7 @@ let imgWidth;
 
 export const itemListener = (item, correct, itemKey) => {
     // RESETA AS PEÇAS CORRETAS NA TROCA DE NÍVEL
-    if (itemKey === 0) {
-        isCorrect = [];
-    }
+    if (itemKey === 0) isCorrect = [];
 
     let isTouching      = false;
     let isScrolling     = false;
@@ -22,7 +20,6 @@ export const itemListener = (item, correct, itemKey) => {
         imgWidth = item.offsetWidth;
         item.scrollTop = item.scrollTop;
     });
-
 
     item.addEventListener('touchstart', () => isTouching = true);
     item.addEventListener('scroll', () => {
@@ -60,6 +57,9 @@ export const itemListener = (item, correct, itemKey) => {
         if (timerGetPiece !== null) clearTimeout(timerGetPiece);
         timerGetPiece = setTimeout(() => {
             if (!isTouching) {
+                console.log(correct);
+
+                console.info(currentPiece);
                 if (currentPiece === correct) isCorrect[itemKey] = true;
 
                 for (const e of isCorrect) {
@@ -71,6 +71,7 @@ export const itemListener = (item, correct, itemKey) => {
                 }
 
                 if (isAllCorrect) {
+                    console.info('BOAAAAAA');
                     document.body.style.backgroundColor = "#5d82b0";
                     itemContainer.style.backgroundColor = "#dcd17e";
                 }

@@ -1,84 +1,53 @@
+const level = [
+    new Level(1, "stars", 4, 2),
+    new Level(2, "stars", 6, 3),
+    new Level(3, "stars", 9, 3),
+    new Level(4, "stars", 12, 4),
+    new Level(5, "stars", 16, 4),
+    new Level(6, "stars", 20, 4),
+];
+
 import { createItems } from "./itemGenerator.mjs";
-import { itemListener } from "./itemActions.mjs";
-const startButton = document.getElementById('play-game-btn');
-const startButton2 = document.getElementById('play-game-btn-2');
-const startButton3 = document.getElementById('play-game-btn-3');
-const startButton4 = document.getElementById('play-game-btn-4');
-const startButton5 = document.getElementById('play-game-btn-5');
-
-const itemsContainer = document.getElementById('items-container');
-let items;
-
-console.log(itemsContainer.childElementCount);
-
-startButton.addEventListener('click', function () {
-    startGame(1);
-})
-startButton2.addEventListener('click', function () {
-    startGame(2);
-})
-startButton3.addEventListener('click', function () {
-    startGame(3);
-})
-startButton4.addEventListener('click', function () {
-    startGame(4);
-})
-startButton5.addEventListener('click', function () {
-    startGame(5);
-})
-
-
-function startGame(level) {
-    let correctPositions;
-
-    if (itemsContainer.childElementCount) closeGame();
+function Level(lv, type, items, columns) {
+    this.num = lv,
+    this.type = type,
+    this.items = items,
+    this.columns = columns,
     
-    if (level === 1) {
-        correctPositions = createItems(4, 2, 8, "stars");
-    }
-    else if (level === 2) {
-        correctPositions = createItems(6, 3, 8, "stars");
-    }
-    else if (level === 3) {
-        correctPositions = createItems(9, 3, 8, "stars");
-    }
-    else if (level === 4) {
-        correctPositions = createItems(12, 4, 8, "stars");
-    }
-    else if (level === 5) {
-        correctPositions = createItems(20, 4, 8, "stars");
-    }
+    this.create = () => this.corrects = createItems(this.num, this.items, this.columns, 8, this.type),
 
-    items = Array.from(document.querySelectorAll('.item'));
-    items.map((item, key) => {
-        itemListener(item, correctPositions[key], key);
-    });
-}
+    this.open = () => {
+        const container = document.getElementById("items-container");
+        container.style.gridTemplateColumns = `repeat(${this.columns}, 1fr)`;
 
-function closeGame() {
-    for (const elem of items) {
-        itemsContainer.removeChild(elem);
+        // ESCONDE TODOS OS ELEMENTOS
+        const allItems = document.querySelectorAll(".item");
+        Array.from(allItems).map((e) => e.classList.add('closed-level'));
+
+        // MOSTRA OS ELEMENTOS DO NÍVEL ATUAL
+        const levelItems = Array.from(document.querySelectorAll(`.lv${this.num}`));
+        Array.from(levelItems).map((e) => e.classList.remove('closed-level'));
     }
 }
 
+import { itemListener } from './itemActions.mjs';
+const levelsBtns = Array.from(document.getElementsByClassName("play-game-btn"));
+for (let i = 0; i < levelsBtns.length; i++) {
+    let currentLv = level[i];
+
+    currentLv.create();
+
+    levelsBtns[i].onclick = () => {
+        currentLv.open();
+    }
+
+    console.info(currentLv.corrects);
+}
+
+level[0].open();
 
 
 
 
 
 
-
-
-
-
-/*
-
-4  items = 2x2
-6  items = 3x2
-9  items = 3x3
-8  items = 4x2
-12 items = 4x3
-16 items = 4x4
-20 items = 4x5
-
-*/
