@@ -28,6 +28,7 @@ export const itemListener = (item, correct, itemKey) => {
         isCorrect[itemKey]  = false;
         let currentPosition = item.scrollTop / imgWidth;
         let currentPiece    = Math.round(currentPosition + 1);
+        console.info(currentPiece);
     
         itemContainer.style.backgroundColor = "";
         document.body.style.backgroundColor = "";
@@ -57,7 +58,7 @@ export const itemListener = (item, correct, itemKey) => {
         if (timerGetPiece !== null) clearTimeout(timerGetPiece);
         timerGetPiece = setTimeout(() => {
             if (!isTouching) {
-                console.log(correct);
+                // console.log(correct);
 
                 console.info(currentPiece);
                 if (currentPiece === correct) isCorrect[itemKey] = true;

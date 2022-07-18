@@ -36,12 +36,10 @@ for (let i = 0; i < levelsBtns.length; i++) {
     let currentLv = level[i];
 
     currentLv.create();
+    levelsBtns[i].onclick = () => currentLv.open();
 
-    levelsBtns[i].onclick = () => {
-        currentLv.open();
-    }
-
-    console.info(currentLv.corrects);
+    const lvItems = Array.from(document.querySelectorAll(`.lv${currentLv.num}`));
+    lvItems.map((item, key) => itemListener(item, currentLv.corrects[key], key));
 }
 
 level[0].open();
