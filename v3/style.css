@@ -49,7 +49,7 @@ body {
     width: min(95vw, 68vh, 480px);
     display: grid;
 
-    height: 20px;
+    /* height: 20px; */
     background-color: red;
 }
 

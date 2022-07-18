@@ -13,7 +13,7 @@ function shuffle(arr) {
     return arr;
 }
 
-export const createItems = (itemsNo, columns, piecesNo, type) => {
+export const createItems = (lv, itemsNo, columns, piecesNo, type) => {
     let correctPos  = []; // ARRAY PARA GUARDAR AS POSIÇÕES CORRETAS DAS PEÇAS
     container.style.gridTemplateColumns = `repeat(${columns}, 1fr)`;
 
@@ -23,7 +23,7 @@ export const createItems = (itemsNo, columns, piecesNo, type) => {
         let imageSrcs = [];
 
         newItem = document.createElement('div');
-        newItem.setAttribute('class', 'item');
+        newItem.setAttribute('class', `item lv${lv}`);
         newItem.setAttribute('id', 'item-' + i);
         newItem.style.width = `min(${95 / columns}vw, ${68 / columns}vh, ${480 / columns}px)`;
         newItem.style.height = `min(${95 / columns}vw, ${68 / columns}vh, ${480 / columns}px)`;
