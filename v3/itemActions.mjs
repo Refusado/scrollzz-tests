@@ -13,7 +13,7 @@ export const itemListener = (item, correct, itemKey) => {
     let itemContainer   = item.parentNode;
     imgWidth            = item.offsetWidth;
     isCorrect[itemKey]  = false;
-    item.scrollTop      = 0;
+    // item.scrollTop      = 0;
 
     // VERIFICAR QUANDO A TELA É REDIMENSIONADA PARA REAJUSTAR O TAMANHO DAS IMAGENS NO SISTEMA
     window.addEventListener('resize', () => {

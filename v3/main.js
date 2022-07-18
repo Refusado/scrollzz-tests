@@ -27,19 +27,21 @@ function Level(lv, type, items, columns) {
         // MOSTRA OS ELEMENTOS DO NÍVEL ATUAL
         const levelItems = Array.from(document.querySelectorAll(`.lv${this.num}`));
         Array.from(levelItems).map((e) => e.classList.remove('closed-level'));
+
+
+        const lvItems = Array.from(document.querySelectorAll(`.lv${this.num}`));
+        lvItems.map((item, key) => itemListener(item, this.corrects[key], key));
     }
 }
 
 import { itemListener } from './itemActions.mjs';
 const levelsBtns = Array.from(document.getElementsByClassName("play-game-btn"));
-for (let i = 0; i < levelsBtns.length; i++) {
+for (let i = 0; i < level.length; i++) {
     let currentLv = level[i];
 
     currentLv.create();
     levelsBtns[i].onclick = () => currentLv.open();
 
-    const lvItems = Array.from(document.querySelectorAll(`.lv${currentLv.num}`));
-    lvItems.map((item, key) => itemListener(item, currentLv.corrects[key], key));
 }
 
 level[0].open();
